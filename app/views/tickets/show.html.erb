@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>チケット名</b>
+  <%= @ticket.name %>
+</p>
+
+<p>
+  <b>タイプ</b>
+  <%= @ticket.get_status %>
+</p>
+
+<p>
+  <b>担当者</b>
+  <%= @ticket.person %>
+</p>
+
+<p>
+  <b>優先度</b>
+  <%= @ticket.get_priority %>
+</p>
+
+<p>
+  <b>終了済み?</b>
+  <%= @ticket.finished %>
+</p>
+
+<p>
+  <b>メモ</b>
+  <%= @ticket.memo %>
+</p>
+
+<p>
+  <b>コメント</b><br>
+  <% @comments.each_with_index do |c,i| %>
+  <%= i+1 %>. 
+  <%= c.comment %>
+  (<%= c.name %>)
+  <%= c.updated_at %>
+  <br>
+  <% end %>
+  <% @new_comment = Comment.new(:ticket_id => @ticket.id) %>
+  <%= form_for(@new_comment) do |f| %>
+  名前
+  <%= f.text_field :name, :size => 8 %>
+  <%= f.text_field :comment %>
+  <%= f.hidden_field :ticket_id %>
+  <%= f.submit "書き込み" %>
+  <% end %>
+</p>
+
+
+<%= link_to 'Edit', edit_ticket_path(@ticket) %> |
+<%= link_to 'Back', tickets_path %>

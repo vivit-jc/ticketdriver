@@ -1,0 +1,33 @@
+<h1>チケット一覧</h1>
+
+<table>
+  <tr>
+    <th>チケット名</th>
+    <th>タイプ</th>
+    <th>担当者</th>
+    <th>優先度</th>
+    <th>終了済み</th>
+    <th>コメント数</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @tickets.each do |ticket| %>
+  <tr>
+    <td><%= ticket.name %></td>
+    <td><%= ticket.get_status %></td>
+    <td><%= ticket.person %></td>
+    <td><%= ticket.get_priority %></td>
+    <td><%= ticket.finished %></td>
+    <td><%= ticket.comments.count %></td>
+    <td><%= link_to 'Show', ticket %></td>
+    <td><%= link_to 'Edit', edit_ticket_path(ticket) %></td>
+    <td><%= link_to 'Destroy', ticket, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Ticket', new_ticket_path %>

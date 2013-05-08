@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  status: 1
+  person: MyString
+  priority: 1
+  finished: false
+  memo: MyText
+
+two:
+  name: MyString
+  status: 1
+  person: MyString
+  priority: 1
+  finished: false
+  memo: MyText
