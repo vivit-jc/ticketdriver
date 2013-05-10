@@ -3,9 +3,6 @@
 <table>
   <tr>
     <th>Name</th>
-    <th>Manager</th>
-    <th>Passward</th>
-    <th></th>
     <th></th>
     <th></th>
   </tr>
@@ -13,9 +10,6 @@
 <% @projects.each do |project| %>
   <tr>
     <td><%= project.name %></td>
-    <td><%= project.manager %></td>
-    <td><%= project.passward %></td>
-    <td><%= link_to 'Show', project %></td>
     <td><%= link_to 'Edit', edit_project_path(project) %></td>
     <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>

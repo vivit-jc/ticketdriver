@@ -1,5 +1,5 @@
 Ticketdriver::Application.routes.draw do
-  resources :projects do
+  resources :projects, :expect => [:show] do
     resources :tickets do
     end
   end

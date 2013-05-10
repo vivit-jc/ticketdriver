@@ -1,4 +1,6 @@
 class ProjectsController < ApplicationController
+  include ProjectsHelper
+  before_filter :basic_auth, :only => [:edit,:destroy]
   # GET /projects
   # GET /projects.json
   def index
@@ -8,14 +10,6 @@ class ProjectsController < ApplicationController
       format.html # index.html.erb
       format.json { render json: @projects }
     end
-  end
-
-  # GET /projects/1
-  # GET /projects/1.json
-  def show
-    @project = Project.find(params[:id])
-    redirect_to [Project.find(params[:id]), :tickets]
-
   end
 
   # GET /projects/new
