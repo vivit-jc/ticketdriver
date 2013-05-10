@@ -12,6 +12,13 @@ class ProjectsController < ApplicationController
     end
   end
 
+  # GET /projects/1
+  # GET /projects/1.json
+  def show
+    @project = Project.find(params[:id])
+    redirect_to [Project.find(params[:id]), :tickets]
+  end 
+
   # GET /projects/new
   # GET /projects/new.json
   def new
