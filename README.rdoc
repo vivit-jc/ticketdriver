@@ -1,11 +1,18 @@
 == Ticketdriver
 This is the minimum management tool for Ticket Driven Development.
 
+Simple!
+
+Stylish!
+
+Scaffold!
+
+
 == Getting Started
 
 1. Clone this.
 
-2. Change directory to Ticketdriver and start the web server.
+2. Change directory to ticketdriver and start the web server.
 
 3. Go to http://localhost:3000/ .
 

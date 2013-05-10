@@ -1,9 +1,11 @@
 class TicketsController < ApplicationController
   include TicketsHelper
+  before_filter :basic_auth
+
   # GET /tickets
   # GET /tickets.json
   def index
-    @tickets = Ticket.all
+    @tickets = @project.tickets
 
     respond_to do |format|
       format.html # index.html.erb
@@ -57,7 +59,7 @@ class TicketsController < ApplicationController
 
     respond_to do |format|
       if @ticket.save
-        format.html { redirect_to @ticket, notice: 'Ticket was successfully created.' }
+        format.html { redirect_to project_tickets_path, notice: 'Ticket was successfully created.' }
         format.json { render json: @ticket, status: :created, location: @ticket }
       else
         format.html { render action: "new" }
@@ -73,7 +75,7 @@ class TicketsController < ApplicationController
 
     respond_to do |format|
       if @ticket.update_attributes(params[:ticket])
-        format.html { redirect_to @ticket, notice: 'Ticket was successfully updated.' }
+        format.html { redirect_to project_ticket_path(@ticket.project_id,@ticket), notice: 'Ticket was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -89,7 +91,7 @@ class TicketsController < ApplicationController
     @ticket.destroy
 
     respond_to do |format|
-      format.html { redirect_to tickets_url }
+      format.html { redirect_to project_tickets_path }
       format.json { head :no_content }
     end
   end

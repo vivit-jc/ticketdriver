@@ -37,6 +37,7 @@
   <%= c.comment %>
   (<%= c.name %>)
   <%= c.updated_at %>
+  <%= link_to '削除', comment_path(c), method: :delete, data: { confirm: 'Are you sure?' } %>
   <br>
   <% end %>
   <% @new_comment = Comment.new(:ticket_id => @ticket.id) %>
@@ -50,5 +51,5 @@
 </p>
 
 
-<%= link_to 'Edit', edit_ticket_path(@ticket) %> |
-<%= link_to 'Back', tickets_path %>
+<%= link_to 'Edit', edit_project_ticket_path(@ticket.project_id,@ticket) %> |
+<%= link_to 'Back', project_tickets_path %>

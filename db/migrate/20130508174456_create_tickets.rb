@@ -1,6 +1,7 @@
 class CreateTickets < ActiveRecord::Migration
   def change
     create_table :tickets do |t|
+      t.references :project
       t.string :name
       t.integer :status
       t.string :person

@@ -1,8 +1,10 @@
 Ticketdriver::Application.routes.draw do
-  resources :tickets do
+  resources :projects do
+    resources :tickets do
+    end
   end
   resources :comments do
   end
-  root :to => "tickets#index"
+  root :to => "projects#index"
   
 end

@@ -1,4 +1,4 @@
 <%= render 'form' %>
 
-<%= link_to 'Show', @ticket %> |
-<%= link_to 'Back', tickets_path %>
+<%= link_to 'Show', project_ticket_path(@ticket.project_id,@ticket) %> |
+<%= link_to 'Back', project_tickets_path %>
