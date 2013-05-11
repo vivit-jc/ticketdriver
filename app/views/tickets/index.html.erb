@@ -6,7 +6,7 @@
     <th>タイプ</th>
     <th>担当者</th>
     <th>優先度</th>
-    <th>終了済み</th>
+    <th>進行</th>
     <th>コメント数</th>
     <th></th>
     <th></th>
@@ -19,15 +19,15 @@
     <td><%= ticket.get_status %></td>
     <td><%= ticket.person %></td>
     <td><%= ticket.get_priority %></td>
-    <td><%= ticket.finished %></td>
+    <td><% if(ticket.finished) %>済<% end %></td>
     <td><%= ticket.comments.count %></td>
-    <td><%= link_to 'Show', project_ticket_path(ticket.project_id,ticket) %></td>
-    <td><%= link_to 'Edit', edit_project_ticket_path(ticket.project_id,ticket) %></td>
-    <td><%= link_to 'Destroy', project_ticket_path(ticket.project_id,ticket), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to '詳細', project_ticket_path(ticket.project_id,ticket) %></td>
+    <td><%= link_to '編集', edit_project_ticket_path(ticket.project_id,ticket) %></td>
+    <td><%= link_to '削除', project_ticket_path(ticket.project_id,ticket), method: :delete, data: { confirm: 'よろしいですか?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Ticket',  new_project_ticket_path(params[:project_id]) %>
+<%= link_to '新規チケット',  new_project_ticket_path(params[:project_id]) %>

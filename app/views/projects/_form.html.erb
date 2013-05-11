@@ -12,16 +12,16 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label :name, "プロジェクト名" %><br />
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :manager %><br />
+    <%= f.label :manager, "ユーザー名" %><br />
     <%= f.text_field :manager %>
   </div>
   <div class="field">
-    <%= f.label :passward %><br />
-    <%= f.text_field :passward %>
+    <%= f.label :passward, "パスワード" %><br />
+    <%= f.password_field :passward %>
   </div>
   <div class="actions">
     <%= f.submit %>

@@ -26,15 +26,15 @@ class Ticket < ActiveRecord::Base
   def self.get_priority_no(priority)
     case(priority)
     when 0
-      return "最優先事項よ！"
+      return "★★★★★"
     when 1
-      return "とても高い"
+      return "★★★★"
     when 2
-      return "高"
+      return "★★★"
     when 3
-      return "中"
+      return "★★"
     when 4
-      return "低"
+      return "★"
     end
   end
 

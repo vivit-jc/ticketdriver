@@ -13,7 +13,7 @@
     <td><%= project.name %></td>
     <td><%= link_to 'チケット一覧', project %></td>
     <td><%= link_to '編集', edit_project_path(project) %></td>
-    <td><%= link_to '削除', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to '削除', project, method: :delete, data: { confirm: 'よろしいですか?' } %></td>
   </tr>
 <% end %>
 </table>

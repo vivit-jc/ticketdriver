@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class ProjectsController < ApplicationController
   include ProjectsHelper
   before_filter :basic_auth, :only => [:edit,:destroy]
@@ -42,7 +44,7 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.save
-        format.html { redirect_to projects_url, notice: 'Project was successfully created.' }
+        format.html { redirect_to projects_url, notice: '新規チケットを発行しました' }
         format.json { render json: @project, status: :created, location: @project }
       else
         format.html { render action: "new" }
@@ -58,7 +60,7 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.update_attributes(params[:project])
-        format.html { redirect_to projects_url, notice: 'Project was successfully updated.' }
+        format.html { redirect_to projects_url, notice: 'チケットを更新しました' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

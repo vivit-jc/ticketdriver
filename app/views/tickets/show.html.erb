@@ -20,10 +20,11 @@
   <%= @ticket.get_priority %>
 </p>
 
+<% if(@ticket.finished) %>
 <p>
-  <b>終了済み?</b>
-  <%= @ticket.finished %>
+  <b><font color="red">終了済み</font></b>
 </p>
+<% end %>
 
 <p>
   <b>メモ</b>
@@ -37,7 +38,7 @@
   <%= c.comment %>
   (<%= c.name %>)
   <%= c.updated_at %>
-  <%= link_to '削除', comment_path(c), method: :delete, data: { confirm: 'Are you sure?' } %>
+  <%= link_to '削除', comment_path(c), method: :delete, data: { confirm: 'よろしいですか?' } %>
   <br>
   <% end %>
   <% @new_comment = Comment.new(:ticket_id => @ticket.id) %>
@@ -51,5 +52,5 @@
 </p>
 
 
-<%= link_to 'Edit', edit_project_ticket_path(@ticket.project_id,@ticket) %> |
-<%= link_to 'Back', project_tickets_path %>
+<%= link_to '編集', edit_project_ticket_path(@ticket.project_id,@ticket) %> |
+<%= link_to '戻る', project_tickets_path %>
