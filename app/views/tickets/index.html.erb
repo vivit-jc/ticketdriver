@@ -3,7 +3,7 @@
 <table>
   <tr>
     <th>チケット名</th>
-    <th>タイプ</th>
+    <th>属性</th>
     <th>担当者</th>
     <th>優先度</th>
     <th>進行</th>
@@ -30,4 +30,5 @@
 
 <br />
 
-<%= link_to '新規チケット',  new_project_ticket_path(params[:project_id]) %>
+<%= link_to '新規チケット',  new_project_ticket_path(params[:project_id]) %><br>
+<%= link_to '簡易マニュアル',  manual_project_tickets_path(params[:project_id]), {:target => "_blank"} %>
