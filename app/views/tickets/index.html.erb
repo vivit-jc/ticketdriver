@@ -6,7 +6,6 @@
     <th>属性</th>
     <th>担当者</th>
     <th>優先度</th>
-    <th>進行</th>
     <th>コメント数</th>
     <th></th>
     <th></th>
@@ -14,12 +13,29 @@
   </tr>
 
 <% @tickets.each do |ticket| %>
+  <% next if(ticket.finished) %>
   <tr>
     <td><%= ticket.name %></td>
     <td><%= ticket.get_status %></td>
     <td><%= ticket.person %></td>
     <td><%= ticket.get_priority %></td>
-    <td><% if(ticket.finished) %>済<% end %></td>
+    <td><%= ticket.comments.count %></td>
+    <td><%= link_to '詳細', project_ticket_path(ticket.project_id,ticket) %></td>
+    <td><%= link_to '編集', edit_project_ticket_path(ticket.project_id,ticket) %></td>
+    <td><%= link_to '削除', project_ticket_path(ticket.project_id,ticket), method: :delete, data: { confirm: 'よろしいですか?' } %></td>
+  </tr>
+<% end %>
+</table>
+<br>
+終了済み<br>
+<table>
+<% @tickets.each do |ticket| %>
+  <% next if(!ticket.finished) %>
+  <tr>
+    <td><%= ticket.name %></td>
+    <td><%= ticket.get_status %></td>
+    <td><%= ticket.person %></td>
+    <td><%= ticket.get_priority %></td>
     <td><%= ticket.comments.count %></td>
     <td><%= link_to '詳細', project_ticket_path(ticket.project_id,ticket) %></td>
     <td><%= link_to '編集', edit_project_ticket_path(ticket.project_id,ticket) %></td>
