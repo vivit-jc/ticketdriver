@@ -4,6 +4,10 @@ Ticketdriver::Application.routes.draw do
       collection do
         get :manual
       end
+      member do
+        post :lift
+        post :lower
+      end
     end
   end
   resources :comments do

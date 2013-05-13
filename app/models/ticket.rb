@@ -38,4 +38,20 @@ class Ticket < ActiveRecord::Base
     end
   end
 
+  def oarray
+    return [self.name,self.status,self.person,self.priority,self.finished,self.memo,self.project_id,self.created_at]
+  end
+
+  def iarray(array)
+    self.name = array[0]
+    self.status = array[1]
+    self.person = array[2]
+    self.priority = array[3]
+    self.finished = array[4]
+    self.memo = array[5]
+    self.project_id = array[6]
+    self.created_at = array[7]
+    self.save
+  end
+
 end
