@@ -27,8 +27,18 @@
 <% end %>
 
 <p>
+  <b>作成日時</b>
+  <%= @ticket.created_at %>
+</p>
+
+<p>
+  <b>更新日時</b>
+  <%= @ticket.updated_at %>
+</p>
+
+<p>
   <b>メモ</b>
-  <%= @ticket.memo %>
+  <%= simple_format(@ticket.memo) %>
 </p>
 
 <p>

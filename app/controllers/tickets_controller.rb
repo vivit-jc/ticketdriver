@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class TicketsController < ApplicationController
   include TicketsHelper
   before_filter :basic_auth
@@ -59,7 +61,7 @@ class TicketsController < ApplicationController
 
     respond_to do |format|
       if @ticket.save
-        format.html { redirect_to project_tickets_path, notice: 'Ticket was successfully created.' }
+        format.html { redirect_to project_tickets_path, notice: 'チケットが作成されました' }
         format.json { render json: @ticket, status: :created, location: @ticket }
       else
         format.html { render action: "new" }
@@ -75,7 +77,7 @@ class TicketsController < ApplicationController
 
     respond_to do |format|
       if @ticket.update_attributes(params[:ticket])
-        format.html { redirect_to project_ticket_path(@ticket.project_id,@ticket), notice: 'Ticket was successfully updated.' }
+        format.html { redirect_to project_ticket_path(@ticket.project_id,@ticket), notice: 'チケットが更新されました' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
