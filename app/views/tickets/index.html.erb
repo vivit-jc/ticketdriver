@@ -1,5 +1,8 @@
 <h1><%= @project.name %> チケット一覧</h1>
 
+
+<%= link_to '新規チケット',  new_project_ticket_path(params[:project_id]) %>
+<%= link_to '簡易マニュアル',  manual_project_tickets_path(params[:project_id]), {:target => "_blank"} %>
 <table>
   <tr>
     <th>チケット名</th>
@@ -47,8 +50,3 @@
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to '新規チケット',  new_project_ticket_path(params[:project_id]) %><br>
-<%= link_to '簡易マニュアル',  manual_project_tickets_path(params[:project_id]), {:target => "_blank"} %>
