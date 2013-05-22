@@ -7,7 +7,8 @@ class TicketsController < ApplicationController
   # GET /tickets
   # GET /tickets.json
   def index
-    @tickets = @project.tickets
+    @tickets = Ticket.where(:finished => false, :project_id => @project.id)
+    @tickets_finished = Ticket.where(:finished => true, :project_id => @project.id).limit(10).order("updated_at DESC")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -25,6 +26,10 @@ class TicketsController < ApplicationController
       format.html # show.html.erb
       format.json { render json: @ticket }
     end
+  end
+
+  def show_more
+    @tickets = Ticket.where(:finished => true, :project_id => @project.id).order("updated_at DESC")
   end
 
   # GET /tickets/new

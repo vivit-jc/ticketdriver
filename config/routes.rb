@@ -2,6 +2,7 @@ Ticketdriver::Application.routes.draw do
   resources :projects do
     resources :tickets do
       collection do
+        get :show_more
         get :manual
       end
       member do

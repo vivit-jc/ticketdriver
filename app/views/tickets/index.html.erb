@@ -31,10 +31,10 @@
 <% end %>
 </table>
 <br>
-終了済み<br>
+終了済み(最新の10件)<br>
+<%= link_to "全ての終了済みチケットを見る", :show_more_project_tickets %><br>
 <table>
-<% @tickets.each do |ticket| %>
-  <% next if(!ticket.finished) %>
+<% @tickets_finished.each_with_index do |ticket,i| %>
   <tr>
     <td><%= ticket.name %></td>
     <td><%= ticket.get_status %></td>

@@ -1,0 +1,17 @@
+
+<h1><%= @project.name %> 終了済みチケット一覧</h1>
+<%= link_to "戻る", :project_tickets %><br>
+<table>
+<% @tickets.each_with_index do |ticket,i| %>
+  <tr>
+    <td><%= ticket.name %></td>
+    <td><%= ticket.get_status %></td>
+    <td><%= ticket.person %></td>
+    <td><%= ticket.get_priority %></td>
+    <td><%= ticket.comments.count %></td>
+    <td><%= link_to '詳細', project_ticket_path(ticket.project_id,ticket) %></td>
+    <td><%= link_to '編集', edit_project_ticket_path(ticket.project_id,ticket) %></td>
+    <td><%= link_to '削除', project_ticket_path(ticket.project_id,ticket), method: :delete, data: { confirm: 'よろしいですか?' } %></td>
+  </tr>
+<% end %>
+</table>
