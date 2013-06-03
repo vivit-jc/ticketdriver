@@ -14,6 +14,11 @@ class Ticket < ActiveRecord::Base
     return Ticket::get_priority_no(self.priority)
   end
 
+  def update_j
+    time = self.updated_at
+    return time.year.to_s + "年" + time.month.to_s + "月" + time.day.to_s + "日 " + time.hour.to_s + ":" + ("%02d" % time.min ).to_s
+  end
+
   def self.get_status_no(status)
     case(status)
     when 0

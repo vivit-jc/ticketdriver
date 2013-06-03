@@ -8,6 +8,18 @@ class TicketsController < ApplicationController
   # GET /tickets.json
   def index
     @tickets = Ticket.where(:finished => false, :project_id => @project.id)
+    if(params[:sort])
+      case params[:sort]
+      when "priority"
+        @tickets = @tickets.order("priority DESC") if(!params[:asc])
+        @tickets = @tickets.order("priority ASC") if(params[:asc])
+      when "updated_at"
+        @tickets = @tickets.order("updated_at DESC") if(!params[:asc])
+        @tickets = @tickets.order("updated_at ASC") if(params[:asc])
+      end
+    else
+      @tickets = @tickets.order("updated_at DESC")
+    end
     @tickets_finished = Ticket.where(:finished => true, :project_id => @project.id).limit(10).order("updated_at DESC")
 
     respond_to do |format|
