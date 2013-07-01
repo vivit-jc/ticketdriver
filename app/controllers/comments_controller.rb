@@ -5,6 +5,7 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(params[:comment])
     @ticket = Ticket.find(@comment.ticket_id)
+    @ticket.update_attributes(:updated_at => Time.now)
 
     respond_to do |format|
       if @comment.save

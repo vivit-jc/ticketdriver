@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 class Ticket < ActiveRecord::Base
-  attr_accessible :finished, :memo, :name, :person, :priority, :status, :project_id
+  attr_accessible :finished, :memo, :name, :person, :priority, :status, :project_id, :updated_at
   has_many :comments
   belongs_to :project
   accepts_nested_attributes_for :project
@@ -41,6 +41,11 @@ class Ticket < ActiveRecord::Base
     when 4
       return "★"
     end
+  end
+
+  def recent_comment?
+    return true if(self.comments.select{|c| c.updated_at > Time.now - 24*60*60}.count > 0)
+    return false
   end
 
   def oarray
