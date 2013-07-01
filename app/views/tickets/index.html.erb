@@ -25,17 +25,8 @@
   </tr>
 
 <% @tickets.each do |ticket| %>
-  <% next if(ticket.finished) %>
   <tr>
-    <td><%= ticket.name %></td>
-    <td><%= ticket.get_status %></td>
-    <td><%= ticket.person %></td>
-    <td><%= ticket.get_priority %></td>
-    <td><%= ticket.comments.count %></td>
-    <td><%= ticket.update_j %></td>
-    <td><%= link_to '詳細', project_ticket_path(ticket.project_id,ticket) %></td>
-    <td><%= link_to '編集', edit_project_ticket_path(ticket.project_id,ticket) %></td>
-    <td><%= link_to '削除', project_ticket_path(ticket.project_id,ticket), method: :delete, data: { confirm: 'よろしいですか?' } %></td>
+  <%= render partial: "ticket", :locals => { :ticket => ticket} %>
   </tr>
 <% end %>
 </table>
@@ -43,16 +34,9 @@
 終了済み(最新の10件)<br>
 <%= link_to "全ての終了済みチケットを見る", :show_more_project_tickets %><br>
 <table>
-<% @tickets_finished.each_with_index do |ticket,i| %>
+<% @tickets_finished.each do |ticket| %>
   <tr>
-    <td><%= ticket.name %></td>
-    <td><%= ticket.get_status %></td>
-    <td><%= ticket.person %></td>
-    <td><%= ticket.get_priority %></td>
-    <td><%= ticket.comments.count %></td>
-    <td><%= link_to '詳細', project_ticket_path(ticket.project_id,ticket) %></td>
-    <td><%= link_to '編集', edit_project_ticket_path(ticket.project_id,ticket) %></td>
-    <td><%= link_to '削除', project_ticket_path(ticket.project_id,ticket), method: :delete, data: { confirm: 'よろしいですか?' } %></td>
+  <%= render partial: "ticket", :locals => { :ticket => ticket} %>
   </tr>
 <% end %>
 </table>
