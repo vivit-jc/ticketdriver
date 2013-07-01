@@ -7,18 +7,16 @@
   <tr>
     <th>チケット (<%= @tickets.count %>件)</th>
     <th>属性</th>
-    <th>担当者</th>
 <% if(params[:asc]) %>
+    <th><%= link_to "担当者", {:controller => :tickets, :action => :index, :sort => "person"} %></th>
     <th><%= link_to "優先度", {:controller => :tickets, :action => :index, :sort => "priority"} %></th>
+    <th><%= link_to "更新日時", {:controller => :tickets, :action => :index, :sort => "updated_at"} %></th>
 <% else %>
+    <th><%= link_to "担当者", {:controller => :tickets, :action => :index, :sort => "person", :asc => "true"} %></th>
     <th><%= link_to "優先度", {:controller => :tickets, :action => :index, :sort => "priority", :asc => "true"} %></th>
+    <th><%= link_to "更新日時", {:controller => :tickets, :action => :index, :sort => "updated_at", :asc => "true"} %></th>
 <% end %>
     <th>コメント数</th>
-<% if(params[:asc]) %>
-    <th><%= link_to "更新時刻", {:controller => :tickets, :action => :index, :sort => "updated_at"} %></th>
-<% else %>
-    <th><%= link_to "更新時刻", {:controller => :tickets, :action => :index, :sort => "updated_at", :asc => "true"} %></th>
-    <% end %>
     <th></th>
     <th></th>
     <th></th>

@@ -13,6 +13,9 @@ class TicketsController < ApplicationController
       when "priority"
         @tickets = @tickets.order("priority DESC") if(!params[:asc])
         @tickets = @tickets.order("priority ASC") if(params[:asc])
+      when "person"
+        @tickets = @tickets.order("person DESC") if(!params[:asc])
+        @tickets = @tickets.order("person ASC") if(params[:asc])
       when "updated_at"
         @tickets = @tickets.order("updated_at DESC") if(!params[:asc])
         @tickets = @tickets.order("updated_at ASC") if(params[:asc])
