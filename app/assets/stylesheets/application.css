@@ -14,6 +14,10 @@ td {
  border-bottom: none;
  border-left: 1px solid #ccc;
 }
+
+td.name {
+ width: 300px;
+}
  
 thead tr {
  border-right: 1px solid #6B97BF;
