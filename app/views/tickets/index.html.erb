@@ -22,8 +22,6 @@
     <th></th>
     <th></th>
     <th></th>
-    <th></th>
-    <th></th>
   </tr>
 
 <% @tickets.each do |ticket| %>
@@ -38,8 +36,6 @@
     <td><%= link_to '詳細', project_ticket_path(ticket.project_id,ticket) %></td>
     <td><%= link_to '編集', edit_project_ticket_path(ticket.project_id,ticket) %></td>
     <td><%= link_to '削除', project_ticket_path(ticket.project_id,ticket), method: :delete, data: { confirm: 'よろしいですか?' } %></td>
-    <td><%= link_to '▲', lift_project_ticket_path(ticket.project_id,ticket), method: :post %></td>
-    <td><%= link_to '▼', lower_project_ticket_path(ticket.project_id,ticket), method: :post %></td>
   </tr>
 <% end %>
 </table>

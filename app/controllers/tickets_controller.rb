@@ -119,26 +119,4 @@ class TicketsController < ApplicationController
   def manual
   end
 
-  def lift
-    tickets = Ticket.find(:all, :conditions => {:project_id => @project.id, :finished => false})
-    tickets.each_with_index do |t,i|
-      if(t.id == params[:id].to_i && i > 0)
-        exchange(tickets[i],tickets[i-1])
-        break
-      end
-    end
-    redirect_to project_tickets_path
-  end
-
-  def lower
-    tickets = Ticket.find(:all, :conditions => {:project_id => @project.id, :finished => false})
-    tickets.each_with_index do |t,i|
-      if(t.id == params[:id].to_i && i < tickets.size-1)
-        exchange(tickets[i],tickets[i+1])
-        break
-      end
-    end
-    redirect_to project_tickets_path
-  end
-
 end

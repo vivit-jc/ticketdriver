@@ -19,19 +19,4 @@ module TicketsHelper
     end
   end
 
-  def exchange(t1,t2)
-    t1.comments.each do |c|
-      c.ticket_id = t2.id
-    end
-    t2.comments.each do |c|
-      c.ticket_id = t1.id
-    end
-    t1.comments.each {|c| c.save}
-    t2.comments.each {|c| c.save}
-    
-    temparray = t1.oarray
-    t1.iarray(t2.oarray)
-    t2.iarray(temparray)
-  end
-
 end
