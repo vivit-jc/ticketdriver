@@ -43,9 +43,23 @@ class Ticket < ActiveRecord::Base
     end
   end
 
-  def recent_comment?
-    return true if(self.comments.select{|c| c.updated_at > Time.now - 24*60*60}.count > 0)
-    return false
+  def recent_comment_color
+    [["red",2*24*60*60],["green",7*24*60*60],["blue",31*24*60*60]].each do |set|
+      return set[0] if(recent_comment?(set[1]))
+    end
+    return "black"
+  end
+
+
+  def recent_ticket_color
+    return "red" if(self.updated_at > Time.now - 2*24*60*60)
+    return "green" if(self.updated_at > Time.now - 7*24*60*60)
+    return "blue" if(self.updated_at > Time.now - 31*24*60*60)
+    return "black"
+  end
+
+  def recent_comment?(time)
+    return self.comments.select{|c| c.updated_at > Time.now - time}.count > 0
   end
 
   def oarray

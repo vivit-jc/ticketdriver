@@ -2,18 +2,10 @@
 <td><%= ticket.get_status %></td>
 <td><%= ticket.person %></td>
 <td><%= ticket.get_priority %></td>
-<% if(!ticket.finished) %>
-  <% if(ticket.updated_at > Time.now() - 24*60*60) %>
-  <td><span class="red"><%= ticket.update_j %></span></td>
-  <% else %>
-  <td><%= ticket.update_j %></td>
-  <% end %>
+<% unless(ticket.finished) %>
+<td><span class="<%= ticket.recent_ticket_color %>"><%= ticket.update_j %></span></td>
 <% end %>
-<% if(ticket.recent_comment?) %>
-<td><span class="red"><%= ticket.comments.count %></span></td>
-<% else %>
-<td><%= ticket.comments.count %></td>
-<% end %>
+<td><span class="<%= ticket.recent_comment_color %>"><%= ticket.comments.count %></span></td>
 <td><%= link_to '詳細', project_ticket_path(ticket.project_id,ticket) %></td>
 <td><%= link_to '編集', edit_project_ticket_path(ticket.project_id,ticket) %></td>
 <td><%= link_to '削除', project_ticket_path(ticket.project_id,ticket), method: :delete, data: { confirm: 'よろしいですか?' } %></td>
