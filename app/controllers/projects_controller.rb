@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 class ProjectsController < ApplicationController
-  before_filter { |c| basic_auth(params[:id]) }, :only => [:edit,:destroy]
+  before_action :only => [:edit,:destroy] { |c| basic_auth(params[:id]) }
   # GET /projects
   # GET /projects.json
   def index
