@@ -2,7 +2,7 @@
 
 class TicketsController < ApplicationController
   include TicketsHelper
-  before_filter :basic_auth
+  before_action { |c| basic_auth(params[:project_id]) }
 
   # GET /tickets
   # GET /tickets.json

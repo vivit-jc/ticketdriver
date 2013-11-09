@@ -1,3 +1,4 @@
+<tr>
 <td class="name"><%= ticket.name %></td>
 <td><%= ticket.get_status %></td>
 <td><%= ticket.person %></td>
@@ -9,3 +10,9 @@
 <td><%= link_to '詳細', project_ticket_path(ticket.project_id,ticket) %></td>
 <td><%= link_to '編集', edit_project_ticket_path(ticket.project_id,ticket) %></td>
 <td><%= link_to '削除', project_ticket_path(ticket.project_id,ticket), method: :delete, data: { confirm: 'よろしいですか?' } %></td>
+</tr>
+<tr><td colspan=9>
+<% ticket.tags.each do |tag| %>
+<%= link_to tag.name, project_tag_path(@project.id,tag.id) %>
+<% end %>
+</td></tr>

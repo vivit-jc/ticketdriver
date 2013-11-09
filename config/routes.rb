@@ -1,4 +1,5 @@
 Ticketdriver::Application.routes.draw do
+
   resources :projects do
     resources :tickets do
       collection do
@@ -10,9 +11,14 @@ Ticketdriver::Application.routes.draw do
         post :lower
       end
     end
+    resources :tags, :only => [:index,:show,:create,:destroy]
   end
+
   resources :comments do
   end
+
+
+
   root :to => "projects#index"
   
 end

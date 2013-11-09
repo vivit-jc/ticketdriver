@@ -9,29 +9,43 @@
 # from scratch. The latter is a flawed and unsustainable approach (the more migrations
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
-# It's strongly recommended to check this file into your version control system.
+# It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130508211054) do
+ActiveRecord::Schema.define(version: 20131105055637) do
 
-  create_table "comments", :force => true do |t|
+  create_table "comments", force: true do |t|
     t.string   "name"
     t.integer  "ticket_id"
     t.string   "comment"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  add_index "comments", ["ticket_id"], :name => "index_comments_on_ticket_id"
+  add_index "comments", ["ticket_id"], name: "index_comments_on_ticket_id"
 
-  create_table "projects", :force => true do |t|
+  create_table "projects", force: true do |t|
     t.string   "name"
     t.string   "manager"
     t.string   "passward"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "tickets", :force => true do |t|
+  create_table "taggings", force: true do |t|
+    t.integer  "tag_id"
+    t.integer  "ticket_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tags", force: true do |t|
+    t.string   "name"
+    t.text     "memo"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tickets", force: true do |t|
     t.integer  "project_id"
     t.string   "name"
     t.integer  "status"
@@ -39,8 +53,8 @@ ActiveRecord::Schema.define(:version => 20130508211054) do
     t.integer  "priority"
     t.boolean  "finished"
     t.text     "memo"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

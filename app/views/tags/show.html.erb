@@ -1,0 +1,5 @@
+<h1>「<%= @tag.name %>」が付けられたチケット一覧</h1>
+<table>
+  <%= render partial: "tickets/ticket", collection: @tickets %>
+</table><br>
+<%= link_to "チケット一覧", :project_tickets %>

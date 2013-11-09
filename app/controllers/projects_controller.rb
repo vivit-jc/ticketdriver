@@ -1,8 +1,7 @@
 # encoding: utf-8
 
 class ProjectsController < ApplicationController
-  include ProjectsHelper
-  before_filter :basic_auth, :only => [:edit,:destroy]
+  before_filter { |c| basic_auth(params[:id]) }, :only => [:edit,:destroy]
   # GET /projects
   # GET /projects.json
   def index

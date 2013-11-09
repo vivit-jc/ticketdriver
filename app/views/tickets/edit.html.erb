@@ -1,4 +1,15 @@
 <%= render 'form' %>
+  <div>
+    <% @ticket.tags.each do |tag| %>
+    <%= link_to tag.name, project_tag_path(@project.id,tag.id) %>
+    <%= link_to '×', {controller: :tags, action: :destroy, id: tag.id, ticket_id: @ticket.id}, method: :delete, data: { confirm: 'このタグを削除しますか？' } %></td>
+    <% end %>
+    <%= form_tag project_tags_path(params[:project_id]) do %>
+    <%= text_field_tag :name %>
+    <%= hidden_field_tag :ticket_id, @ticket.id %>
+    <%= submit_tag "タグを追加" %>
+    <% end %>
+  </div>
 
 <%= link_to '詳細', project_ticket_path(@ticket.project_id,@ticket) %> |
 <%= link_to '戻る', project_tickets_path %>

@@ -8,6 +8,7 @@ gem 'rails', '4.0.1'
 gem 'sqlite3'
 gem 'rspec-rails'
 gem 'factory_girl_rails'
+gem 'protected_attributes'
 
 # Gems used only for assets and not required
 # in production environments by default.

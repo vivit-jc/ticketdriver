@@ -21,12 +21,7 @@
     <th></th>
     <th></th>
   </tr>
-
-<% @tickets.each do |ticket| %>
-  <tr>
-  <%= render partial: "ticket", :locals => { :ticket => ticket} %>
-  </tr>
-<% end %>
+  <%= render partial: "ticket", collection: @tickets %>
 </table>
 <br>
 終了済み(最新の10件)<br>

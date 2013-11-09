@@ -3,6 +3,8 @@
 class Ticket < ActiveRecord::Base
   attr_accessible :finished, :memo, :name, :person, :priority, :status, :project_id, :updated_at
   has_many :comments
+  has_many :taggings
+  has_many :tags, through: :taggings
   belongs_to :project
   accepts_nested_attributes_for :project
 
